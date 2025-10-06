@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORGE-Tree: Diffusion-Forcing Tree Search for Long-Horizon Robot Manipulation</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 新增样式 */
+        .intro-video {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .intro-video video {
+            max-width: 90%;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .pipeline-image {
+            max-width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .video-wrapper {
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <div class="header-container">
+            <img src="school.png" alt="School Logo" class="header-logo">
+            <img src="TACO-Group.png" alt="Lab Logo" class="header-logo">
+        </div>
+
+        <!-- 标题 -->
+        <header>
+            <h1>FORGE-Tree</h1>
+            <h2>Diffusion Forcing Tree Search for Long Horizon Robot Manipulation</h2>
+            <p class="authors">Yanjia Huang$^{1*}$, Shuo Liu$^{2*}$,  Sheng Liu$^{3}$, Qingxiao Xu$^{1}$,  Mingyang Wu$^{1}$, Xiangbo Gao$^{1}$ and Zhengzhong Tu$^{1}$</p>
+        </header>
+
+        <!-- Intro Video (with poster, no heading) -->
+        <section class="intro-video">
+            <div class="video-wrapper">
+                <video controls width="720" poster="overview.png">
+                    <source src="forge-tree.MP4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+
+
+        <!-- 交互按钮 -->
+        <div class="buttons">
+            <a href="https://arxiv.org/pdf/2503.14545" class="btn" target="_blank">Read Paper</a>
+            <a href="https://github.com/taco-group/FORGE-Tree" class="btn" target="_blank">GitHub Repo</a>
+        </div>
+
+         <!-- 方法介绍 -->
+         <section class="method">
+             <p>
+                 FORGE-Tree combines diffusion-based policy learning with Monte Carlo Tree Search for long-horizon robot manipulation.
+                 The framework employs a stage-aligned Diffusion Forcing (DF) head that aligns timesteps to subtask stages,
+                 enabling partial denoising of target segments while keeping other tokens frozen.
+                 Monte Carlo Tree Diffusion (MCTD) selects the next segment to refine, using scene graph priors
+                 for expansion and geometry relation-aware scoring for rollouts.
+                 This yields tree-structured denoising whose performance scales with search budget while preserving the executed prefix.
+             </p>
+         </section>
+
+         <!-- Pipeline 图片（移动后的） -->
+         <section class="pipeline">
+             <img src="overview.png" alt="FORGE-Tree Pipeline" class="pipeline-image">
+         </section>
+
+        <!-- Abstract -->
+        <section class="intro">
+            <h2>Abstract</h2>
+            <p>
+                Long-horizon robot manipulation tasks remain challenging for Vision-Language-Action (VLA) policies due to drift and exposure bias, often denoise the entire trajectory with fixed hyperparameters, causing small geometric errors to compound across stages and offering no mechanism to allocate extra test-time compute where clearances are tight. To address these challenges, we introduce \textbf{FORGE-Tree},  a plug-in control layer that couples a stage-aligned \emph{Diffusion Forcing} (DF) head with test-time \emph{Monte Carlo Tree Diffusion} (MCTD). With a frozen VLA encoder, DF aligns timesteps to subtask stages; during inference we partially denoise only a target segment while keeping other tokens frozen, turning trajectory refinement into a sequence of local edits. We then apply Monte Carlo Tree Diffusion to select the next segment to refine. A scene graph supplies priors for expansion and geometry relation-aware scoring for rollouts, yielding \emph{tree-structured denoising} whose performance scales with search budget while preserving the executed prefix. Evaluation on LIBERO, FORGE-Tree improves success rate by \textbf{+13.4–+17.2} pp over the native VLA baselines with both OpenVLA and Octo-Base. Gains remain consistent under comparable compute budgets, especially on long-horizon variants. 
+            </p>
+        </section>
+
+         <!-- 结果展示 -->
+         <section class="results">
+             <h2>Results & Performance</h2>
+             <p>FORGE-Tree improves success rate by <strong>+13.4–+17.2</strong> percentage points over native VLA baselines on LIBERO benchmark.</p>
+             <div class="image-container">
+                 <img src="Table1.png" alt="Results Graph" class="image">
+             </div>
+         </section>
+
+         <!-- Demo 视频 -->
+         <section class="demo">
+             <h2>Demo</h2>
+             <p>Watch the demonstration of FORGE-Tree's long-horizon manipulation capabilities in action.</p>
+             <div class="video-wrapper">
+                 <video controls width="720">
+                     <source src="forge-tree.MP4" type="video/mp4">
+                     Your browser does not support the video tag.
+                 </video>
+             </div>
+         </section>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        Developed by <strong>TACO-Group</strong> | 2025
+    </footer>
+</body>
+</html>

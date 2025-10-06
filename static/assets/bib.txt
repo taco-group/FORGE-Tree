@@ -1,0 +1,9 @@
+@misc{li20244k4dgenpanoramic4dgeneration,
+      title={4K4DGen: Panoramic 4D Generation at 4K Resolution}, 
+      author={Renjie Li and Panwang Pan and Bangbang Yang and Dejia Xu and Shijie Zhou and Xuanyang Zhang and Zeming Li and Achuta Kadambi and Zhangyang Wang and Zhengzhong Tu and Zhiwen Fan},
+      year={2024},
+      eprint={2406.13527},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2406.13527}, 
+}
