@@ -1,0 +1,163 @@
+/* Basic styles for FORGE-Tree website */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+}
+
+.header-logo {
+    height: 60px;
+    width: auto;
+}
+
+/* Title section */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 3em;
+    margin: 0;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+header h2 {
+    font-size: 1.3em;
+    margin: 10px 0;
+    color: #7f8c8d;
+    font-weight: normal;
+}
+
+.authors {
+    font-size: 1.1em;
+    color: #34495e;
+    margin: 15px 0;
+}
+
+/* Buttons */
+.buttons {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 0 10px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+/* Sections */
+section {
+    margin: 40px 0;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+section h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+.method p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+/* Video styles */
+.intro-video {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.intro-video video {
+    max-width: 90%;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.video-wrapper {
+    text-align: center;
+}
+
+/* Pipeline image */
+.pipeline-image {
+    max-width: 100%;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+/* Image container */
+.image-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.image-container img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #2c3e50;
+    color: white;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 2em;
+    }
+    
+    .header-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn {
+        display: block;
+        margin: 10px auto;
+    }
+}
