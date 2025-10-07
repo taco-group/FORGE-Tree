@@ -1,119 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FORGE-Tree: Diffusion-Forcing Tree Search for Long-Horizon Robot Manipulation</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* 新增样式 */
-        .intro-video {
-            margin: 40px 0;
-            text-align: center;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FORGE-Tree: Diffusion-Forcing Tree Search for Long-Horizon Robot Manipulation</title>
+  <meta name="description" content="Project page for FORGE-Tree.">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <style>
+    .hero{background:#0E0E10;color:#fff}
+    .tagline{opacity:.9}
+    .thumb{border-radius:12px}
+    .thumb-video{border-radius:12px}
+    .thumb-image{width:800px; height:450px; object-fit:contain; border-radius:12px}
+    footer{color:#6b7280}
+    
+    .forge-gradient{
+      background: linear-gradient(90deg,
+        #A8E6A1 0%,
+        #CFEEC2 12%,
+        #DDEAFB 28%,
+        #E9E4FB 40%,
+        #F4D2EE 50%,
+        #E9E4FB 60%,
+        #DDEAFB 72%,
+        #CFEEC2 88%,
+        #A8E6A1 100%);
+      -webkit-background-clip: text;
+              background-clip: text;
+      -webkit-text-fill-color: transparent; 
+      color: transparent;                 
+    }
 
-        .intro-video video {
-            max-width: 90%;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-
-        .pipeline-image {
-            max-width: 100%;
-            margin-top: 20px;
-            border-radius: 10px;
-        }
-
-        .video-wrapper {
-            text-align: center;
-        }
-    </style>
-    <script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-    </script>
+    /* 如果放在深色背景上，给一点描边/阴影增强可读性（可选） */
+    .forge-gradient.stroke{
+      -webkit-text-stroke: 1px rgba(0,0,0,.18);
+              text-stroke: 1px rgba(0,0,0,.18);
+      text-shadow: 0 1px 2px rgba(0,0,0,.08);
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Logo -->
-        <div class="header-container">
-            <img src="school.png" alt="School Logo" class="header-logo">
-            <img src="TACO-Group.png" alt="Lab Logo" class="header-logo">
-        </div>
-
-        <!-- 标题 -->
-        <header>
-            <h1>FORGE-Tree</h1>
-            <h2>Diffusion Forcing Tree Search for Long Horizon Robot Manipulation</h2>
-            <p class="authors">Yanjia Huang$^{1*}$, Shuo Liu$^{2*}$,  Sheng Liu$^{3}$, Qingxiao Xu$^{1}$,  Mingyang Wu$^{1}$, Xiangbo Gao$^{1}$ and Zhengzhong Tu$^{1}$</p>
-        </header>
-
-        <!-- Intro Video (with poster, no heading) -->
-        <section class="intro-video">
-            <div class="video-wrapper">
-                <video controls width="720" poster="overview.png">
-                    <source src="forge-tree.MP4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </section>
-
-
-        <!-- 交互按钮 -->
-        <div class="buttons">
-            <a href="https://arxiv.org/pdf/2503.14545" class="btn" target="_blank">Read Paper</a>
-            <a href="https://github.com/taco-group/FORGE-Tree" class="btn" target="_blank">GitHub Repo</a>
-        </div>
-
-         <!-- 方法介绍 -->
-         <section class="method">
-             <p>
-                 FORGE-Tree combines diffusion-based policy learning with Monte Carlo Tree Search for long-horizon robot manipulation.
-                 The framework employs a stage-aligned Diffusion Forcing (DF) head that aligns timesteps to subtask stages,
-                 enabling partial denoising of target segments while keeping other tokens frozen.
-                 Monte Carlo Tree Diffusion (MCTD) selects the next segment to refine, using scene graph priors
-                 for expansion and geometry relation-aware scoring for rollouts.
-                 This yields tree-structured denoising whose performance scales with search budget while preserving the executed prefix.
-             </p>
-         </section>
-
-         <!-- Pipeline 图片（移动后的） -->
-         <section class="pipeline">
-             <img src="overview.png" alt="FORGE-Tree Pipeline" class="pipeline-image">
-         </section>
-
-        <!-- Abstract -->
-        <section class="intro">
-            <h2>Abstract</h2>
-            <p>
-                Long-horizon robot manipulation tasks remain challenging for Vision-Language-Action (VLA) policies due to drift and exposure bias, often denoise the entire trajectory with fixed hyperparameters, causing small geometric errors to compound across stages and offering no mechanism to allocate extra test-time compute where clearances are tight. To address these challenges, we introduce \textbf{FORGE-Tree},  a plug-in control layer that couples a stage-aligned \emph{Diffusion Forcing} (DF) head with test-time \emph{Monte Carlo Tree Diffusion} (MCTD). With a frozen VLA encoder, DF aligns timesteps to subtask stages; during inference we partially denoise only a target segment while keeping other tokens frozen, turning trajectory refinement into a sequence of local edits. We then apply Monte Carlo Tree Diffusion to select the next segment to refine. A scene graph supplies priors for expansion and geometry relation-aware scoring for rollouts, yielding \emph{tree-structured denoising} whose performance scales with search budget while preserving the executed prefix. Evaluation on LIBERO, FORGE-Tree improves success rate by \textbf{+13.4–+17.2} pp over the native VLA baselines with both OpenVLA and Octo-Base. Gains remain consistent under comparable compute budgets, especially on long-horizon variants. 
-            </p>
-        </section>
-
-         <!-- 结果展示 -->
-         <section class="results">
-             <h2>Results & Performance</h2>
-             <p>FORGE-Tree improves success rate by <strong>+13.4–+17.2</strong> percentage points over native VLA baselines on LIBERO benchmark.</p>
-             <div class="image-container">
-                 <img src="Table1.png" alt="Results Graph" class="image">
-             </div>
-         </section>
-
-         <!-- Demo 视频 -->
-         <section class="demo">
-             <h2>Demo</h2>
-             <p>Watch the demonstration of FORGE-Tree's long-horizon manipulation capabilities in action.</p>
-             <div class="video-wrapper">
-                 <video controls width="720">
-                     <source src="forge-tree.MP4" type="video/mp4">
-                     Your browser does not support the video tag.
-                 </video>
-             </div>
-         </section>
+  <section class="section">
+    <div class="container has-text-centered">
+      <h1 class="title is-1 forge-gradient has-text-weight-bold">FORGE-Tree</h1>
+      <p class="subtitle is-4 tagline mt-3 has-text-weight-bold">Diffusion-Forcing Tree Search for Long-Horizon Robot Manipulation</p>
+      <div class="mt-0">
+        <p class="has-text-weight-bold">Yanjia Huang<sup>1*</sup>, Shuo Liu<sup>2*</sup>, Sheng Liu<sup>3</sup>, Qingxiao Xu<sup>1</sup>, Mingyang Wu<sup>1</sup>, Xiangbo Gao<sup>1</sup>, Zhengzhong Tu<sup>1</sup></p>
+        <p class="mt-0 has-text-weight-bold">
+          <sup>1</sup>Texas A&M University &nbsp;&nbsp;&nbsp; <sup>2</sup>University of Washington &nbsp;&nbsp;&nbsp; <sup>3</sup>Karlsruhe Institute of Technology, Germany<br>
+          <small class="has-text-grey has-text-weight-bold"><sup>*</sup>Equal Contributors</small>
+      </div>
+      <p class="mt-3">
+        <a class="button is-link is-light mr-5" href="paper.pdf">Paper</a>
+        <a class="button is-link is-light mr-5" href="https://github.com/taco-group/FORGE-Tree">Code</a>
+        <a class="button is-link is-light" href="#cite">Cite</a>
+      </p>
     </div>
+  </section>
 
-    <!-- 页脚 -->
-    <footer>
-        Developed by <strong>TACO-Group</strong> | 2025
-    </footer>
+  <section class="section">
+    <div class="container">
+      <div class="has-text-centered">
+        <video class="thumb-video" controls poster="cover.png">
+          <source src="forge-tree.MP4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      
+      <div class="mt-4" style="max-width: 900px; margin: 0 auto;">
+        <h3 class="title is-5 mb-3 has-text-centered">Abstract</h3>
+        <p class="has-text-justified" style="line-height: 1.6;">
+          <em>Long-horizon robot manipulation tasks remain challenging for Vision-Language-Action (VLA) policies due to drift and exposure bias, often denoise the entire trajectory with fixed hyperparameters, causing small geometric errors to compound across stages and offering no mechanism to allocate extra test-time compute where clearances are tight. To address these challenges, we introduce <strong>FORGE-Tree</strong>, a plug-in control layer that couples a stage-aligned <em>Diffusion Forcing</em> (DF) head with test-time <em>Monte Carlo Tree Diffusion</em> (MCTD). With a frozen VLA encoder, DF aligns timesteps to subtask stages; during inference we partially denoise only a target segment while keeping other tokens frozen, turning trajectory refinement into a sequence of local edits. We then apply Monte Carlo Tree Diffusion to select the next segment to refine. A scene graph supplies priors for expansion and geometry relation-aware scoring for rollouts, yielding <em>tree-structured denoising</em> whose performance scales with search budget while preserving the executed prefix. Evaluation on LIBERO, FORGE-Tree improves success rate by <strong>+13.4–+17.2</strong> pp over the native VLA baselines with both OpenVLA and Octo-Base. Gains remain consistent under comparable compute budgets, especially on long-horizon variants.</em>
+        </p>
+      </div>
+      <h2 class="title is-4 mt-4">Overview</h2>
+      <div class="has-text-centered">
+        <img class="thumb-image" src="overview.png" alt="FORGE-Tree Pipeline">
+        <p class="mt-2 has-text-grey-dark is-italic" style="max-width: 800px; margin: 0 auto;">
+          Pretrained VLAs encode the instruction and observations, builds a scene graph <i>𝒢</i>, our diffusion head predicts noise, the partial-denoising sampler edits a selected future segment with meta-actions <i>a=(k,m,s,w,τ)</i>, and MCTD evaluates candidates with geometry-aware rewards before executing the first segment and replanning.
+        </p>
+      </div>
+      <h2 class="title is-4 mt-4">Training & Inference</h2>
+      <div class="columns is-centered">
+        <div class="column is-two-thirds">
+          <div class="has-text-centered">
+            <img class="thumb-image" src="DF.png" alt="DF">
+          </div>
+        </div>
+        <div class="column is-one-third">
+          <div class="has-text-centered">
+            <img class="thumb-image" src="MCTD.png" alt="MCTD">
+          </div>
+        </div>
+      </div>
+      <div class="mt-2" style="max-width: 1000px; margin: 0 auto;">
+        <p class="has-text-justified" style="line-height: 1.6;">
+          <em>Left: <em>Noise as masking</em>—subtasks 𝒮<sub>j</sub> share per-subtask timesteps <i>t[i]=t<sub>j</sub></i> (darker cells indicate larger <i>t</i>). Middle (training): conditioned on <i>c=f<sub>VLA</sub>(o,u)</i>, the diffusion head predicts <i>ε<sub>θ</sub>(x<sub>t[i]</sub>,c,t[i])</i>, recovers <i>ẋ<sub>0</sub>[i]</i>, and is supervised by the DF loss (noise MSE + end-of-trajectory and stage-end geometric terms + smoothness). Right (inference): we <em>partially denoise</em> a selected segment <i>S<sub>k,m</sub></i> using jumpy DDIM with geometry guidance <i>w∇<sub>x_t</sub>U(ẋ<sub>0</sub>;𝒢)</i>; only the segment evolves while the complement is frozen, and the first segment is committed before replanning.</em>
+        </p>
+      </div>
+      <h2 class="title is-4 mt-4">Experiment Results</h2>
+      <div class="has-text-centered">
+        <img class="thumb-image" src="Experiments.png" alt="Experiment Results">
+      </div>
+      <h2 id="cite" class="title is-4 mt-4">BibTeX</h2>
+<pre><code>@inproceedings{huang2026forge_tree,
+  title={Diffusion-Forcing Tree Search for Long-Horizon Robot Manipulation},
+  author={Huang, Yanjia and ...},
+  booktitle={ICRA},
+  year={2026}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="section">
+    <div class="container has-text-centered">
+      <small>
+        Built with Bulma. Code MIT; content CC BY-NC-SA 4.0.
+        Adapted from 4K4DGen project page.
+      </small>
+    </div>
+  </footer>
 </body>
 </html>
